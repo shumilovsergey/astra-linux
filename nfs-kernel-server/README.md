@@ -21,6 +21,12 @@ git clone --filter=blob:none --sparse https://github.com/shumilovsergey/astra-li
 cd astra-linux
 git sparse-checkout set nfs-kernel-server
 cd nfs-kernel-server && dpkg -i *.deb
-# если ошибки порядка зависимостей — запустить второй раз:
-dpkg -i *.deb
+curl -s https://raw.githubusercontent.com/shumilovsergey/astra-linux/main/tools/fix-astra-deps.sh | bash
+```
+
+## Проверка
+
+```bash
+systemctl enable nfs-kernel-server --now
+systemctl status nfs-kernel-server --no-pager
 ```

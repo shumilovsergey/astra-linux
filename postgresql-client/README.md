@@ -21,4 +21,11 @@ git clone --filter=blob:none --sparse https://github.com/shumilovsergey/astra-li
 cd astra-linux
 git sparse-checkout set postgresql-client
 cd postgresql-client && dpkg -i *.deb
+curl -s https://raw.githubusercontent.com/shumilovsergey/astra-linux/main/tools/fix-astra-deps.sh | bash
+```
+
+## Проверка
+
+```bash
+psql --version
 ```

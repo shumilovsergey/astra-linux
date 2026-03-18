@@ -21,4 +21,21 @@ git clone --filter=blob:none --sparse https://github.com/shumilovsergey/astra-li
 cd astra-linux
 git sparse-checkout set postgresql
 cd postgresql && dpkg -i *.deb
+curl -s https://raw.githubusercontent.com/shumilovsergey/astra-linux/main/tools/fix-astra-deps.sh | bash
+```
+
+> Ошибки `mailcap` / `bsd-mailx` можно игнорировать — они не влияют на PostgreSQL.
+
+После этого кластер не создаётся автоматически — создать вручную:
+
+```bash
+pg_createcluster 15 main --start
+```
+
+## Проверка
+
+```bash
+psql --version
+pg_lsclusters
+# ожидаемо: Ver=15, Cluster=main, Status=online
 ```

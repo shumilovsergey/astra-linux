@@ -25,12 +25,26 @@ scp git/*.deb root@<server-ip>:/tmp/git/
 cd /tmp/git && dpkg -i *.deb
 ```
 
-### Astra Linux: фикс зависимостей perl
+### Astra Linux: фикс зависимостей
 
-Astra-версия `perl-base` не совпадает с той что ожидает Debian-пакет `git`.
-После `dpkg -i *.deb` perl и git окажутся в статусе "не настроен". Лечится патчем:
+После `dpkg -i *.deb` пакеты могут остаться "не настроены" из-за Astra-патченых версий:
 
 ```bash
-bash fix-astra.sh
+curl -s https://raw.githubusercontent.com/shumilovsergey/astra-linux/main/tools/fix-astra-deps.sh | bash
 ```
 
+## Установить с GitHub (если git уже есть)
+
+```bash
+git clone --filter=blob:none --sparse https://github.com/shumilovsergey/astra-linux.git
+cd astra-linux
+git sparse-checkout set git
+cd git && dpkg -i *.deb
+curl -s https://raw.githubusercontent.com/shumilovsergey/astra-linux/main/tools/fix-astra-deps.sh | bash
+```
+
+## Проверка
+
+```bash
+git --version
+```

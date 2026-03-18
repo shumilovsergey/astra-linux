@@ -34,6 +34,15 @@ cd <package> && dpkg -i *.deb
 
 ## Пакеты
 
+### Инструменты
+- [tools/fix-astra-deps.sh](tools/README.md) — универсальный фикс конфликтов зависимостей Astra 1.8
+
+> После каждого `dpkg -i *.deb` на Astra пакеты могут остаться "не настроены" из-за конфликтов версий.
+> Запустить фикс:
+> ```bash
+> curl -s https://raw.githubusercontent.com/shumilovsergey/astra-linux/main/tools/fix-astra-deps.sh | bash
+> ```
+
 ### Утилиты
 - [git](git/README.md) — система контроля версий (устанавливается первой, через scp)
 - [ufw](ufw/README.md) — файрвол
