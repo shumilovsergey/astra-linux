@@ -8,7 +8,7 @@
 
 ```bash
 # запускать из папки postgresql-client/
-docker run --rm -v $(pwd):/output debian:12 bash -c \
+docker run --rm --platform linux/amd64 -v $(pwd):/output debian:12 bash -c \
   "apt-get update -qq && \
    apt-get install -d -y postgresql-client && \
    cp /var/cache/apt/archives/*.deb /output/"

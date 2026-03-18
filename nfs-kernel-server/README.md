@@ -8,7 +8,7 @@ NFS сервер. Устанавливается на машину, котора
 
 ```bash
 # запускать из папки nfs-kernel-server/
-docker run --rm -v $(pwd):/output debian:12 bash -c \
+docker run --rm --platform linux/amd64 -v $(pwd):/output debian:12 bash -c \
   "apt-get update -qq && \
    apt-get install -d -y nfs-kernel-server && \
    cp /var/cache/apt/archives/*.deb /output/"

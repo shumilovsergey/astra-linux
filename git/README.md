@@ -9,7 +9,7 @@
 
 ```bash
 # запускать из папки git/
-docker run --rm -v $(pwd):/output debian:12 bash -c \
+docker run --rm --platform linux/amd64 -v $(pwd):/output debian:12 bash -c \
   "apt-get update -qq && \
    apt-get install -d -y git && \
    cp /var/cache/apt/archives/*.deb /output/"

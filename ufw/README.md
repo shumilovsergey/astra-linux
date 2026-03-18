@@ -8,7 +8,7 @@
 
 ```bash
 # запускать из папки ufw/
-docker run --rm -v $(pwd):/output debian:12 bash -c \
+docker run --rm --platform linux/amd64 -v $(pwd):/output debian:12 bash -c \
   "apt-get update -qq && \
    apt-get install -d -y ufw && \
    cp /var/cache/apt/archives/*.deb /output/"
